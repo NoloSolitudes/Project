@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .profile-img {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px 30px;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 150px;
+            text-align: center;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .nav-button.active {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .nav-button.active .content {
+            display: block;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .content p, .content ul {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .content ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .content ul li {
+            margin-bottom: 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content ul li::before {
+            content: '•';
+            color: #00ff88;
+            position: absolute;
+            left: -20px;
+        }
+
+        .skill-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 600px) {
+            .nav-button {
+                width: 120px;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            .nav-button.active {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .profile-img {
+                width: 80px;
+                height: 80px;
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="smokeCanvas"></canvas>
+    <div class="container">
+        <img src="Calm&Chilled.jpg" alt="Profile Picture" class="profile-img">
+        <div class="nav">
+            <button class="nav-button active" data-section="home">Home</button>
+            <button class="nav-button" data-section="skills">Skills</button>
+            <!--<button class="nav-button" data-section="background">Background</button>-->
+            <button class="nav-button" data-section="contact">Contact</button>
+            <button class="nav-button" data-section="education">Education</button>
+        </div>
+
+        <div class="content" id="home">
+            <h2>Welcome to My Portfolio</h2>
+            <p>Hi, I'm Matlhogonolo Mametse, a passionate web developer creating innovative <br>and user-friendly solutions.
+            Explore my portfolio<br> to learn more about my skills, background, and projects!</p>
+        </div>
+        <div class="content" id="skills">
+            <h2>My Skills</h2>
+            <ul>
+                <li><img src="HTML.jpeg" alt="HTML Icon" class="skill-icon"> HTML CSS, JavaScript</li>
+                <li><img src="CSS_Logo.jpeg" alt="React Icon" class="skill-icon">CSS</li>
+                <li><img src="JS_Logo.jpeg" alt="UI/UX Icon" class="skill-icon"> Javascript</li>
+                <li><img src="ResWebDev.png" alt="Web Icon" class="skill-icon"> Responsive Web Development</li>
+                <li><img src="Java.png" alt="Git Icon" class="skill-icon">Java</li>
+            </ul>
+        </div>
+        <div class="content" id="background">
+            <!--<h2>Background</h2>
+            <p>With over 3 years of experience in web development, I've worked on various projects ranging from small business websites to complex web applications. My passion for coding drives me to continuously learn and improve.</p>-->
+        </div>
+        <div class="content" id="contact">
+            <h2>Contact Me</h2>
+            <p>Email: emkaymametse@gmail.com</p>
+            <p>Phone: (+27) 81 433 9117</p>
+            <p>LinkedIn: www.linkedin.com/in/matlhogonolo-mametse</p>
+        </div>
+        <div class="content" id="education">
+            <h2>Education</h2>
+            <ul>
+                <li>Diploma In ICT, University of Mpumalanga, 2023-2025</li>
+                <!--<li>Web Development Bootcamp, [Institute Name], 2021</li>
+                <li>Certified JavaScript Developer, [Certifying Body], 2023</li>-->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Smoke trail effect
+        const canvas = document.getElementById('smokeCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        let mouseX = 0;
+        let mouseY = 0;
+
+        class Particle {
+            constructor() {
+                this.x = mouseX;
+                this.y = mouseY;
+                this.size = Math.random() * 15 + 5;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                this.opacity = 0.5;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.size *= 0.95;
+                this.opacity -= 0.01;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function handleParticles() {
+            particles.push(new Particle());
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                if (particles[i].size <= 0.2 || particles[i].opacity <= 0) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            handleParticles();
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        animate();
+
+        // Navigation button functionality
+        const buttons = document.querySelectorAll('.nav-button');
+        const contents = document.querySelectorAll('.content');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                contents.forEach(content => content.style.display = 'none');
+                document.getElementById(button.dataset.section).style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
